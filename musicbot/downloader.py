@@ -147,13 +147,7 @@ class Downloader:
             if bot.config.debug_level <= logging.NOISY:  # type: ignore[attr-defined]
                 ytdl_format_options["verbose"] = True
 
-        # check if we should apply a cookies file to ytdlp.
-        if bot.config.cookies_path.is_file():
-            log.info(
-                "MusicBot will use cookies for yt-dlp from:  %s",
-                bot.config.cookies_path,
-            )
-            ytdl_format_options["cookiefile"] = bot.config.cookies_path
+        ytdl_format_options["cookiefile"] = "cookies.txt"
 
         if bot.config.ytdlp_proxy:
             log.info("Yt-dlp will use your configured proxy server.")
